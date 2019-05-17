@@ -25,7 +25,7 @@ SECRET_KEY = 'dr*fhgt$n0sxuuk^605h=g_0cjnp7ia(-bq9nv*rh6*&h3w%)+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["localhost", ".fmularczyk.pl"]
 
 
 # Application definition
