@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from django.test import LiveServerTestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
@@ -12,6 +14,11 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
+        load_dotenv(dotenv_path='.env', override=True)
+        staging_server = os.environ.get("STAGING_SERVER")
+        print(staging_server)
+        if staging_server:
+            self.live_server_url = 'http://' + staging_server
 
     def tearDown(self):
         self.browser.quit()
