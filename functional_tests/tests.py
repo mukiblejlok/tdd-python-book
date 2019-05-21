@@ -14,7 +14,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
-        load_dotenv(dotenv_path='.env', override=True)
+        # load_dotenv(dotenv_path='.env', override=True)
         staging_server = os.environ.get("STAGING_SERVER")
         if staging_server:
             self.live_server_url = 'http://' + staging_server
