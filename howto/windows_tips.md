@@ -10,3 +10,9 @@ However on Windows you have to do
 env STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 ```
 
+
+2. Deploy a fabfile
+```
+cd deploy_tools
+fab deploy:host=django@lists.fmularczyk.pl
+```
