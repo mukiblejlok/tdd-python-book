@@ -20,35 +20,35 @@ ssh root@111.111.222.111
 There is an article [My First 5 Minutes On A Server; Or, Essential Security for Linux Servers]( https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers) that describes in few short steps what to do when you startup you server for the first time. In this and following intermezzos I will add some points from it.
 
 ```bash
-apt-get update
-apt-get upgrade
-apt-get install fail2ban
+$ apt-get update
+$ apt-get upgrade
+$ apt-get install fail2ban
 ```
 ---
 
 3. Create a user that will run our applications (with *sudo* access and '*deploy*' as a name)
 ```bash
-useradd -m -s /bin/bash deploy   
+$ useradd -m -s /bin/bash deploy   
 # -m creates a home folder
 # -s sets user to use bash by default
 
-usermod -a -G sudo delpoy 
+$ usermod -a -G sudo delpoy 
 # add user to the sudoers group
 
-passwd deploy 
+$ passwd deploy 
 # set password for user
 # make it hard and long, because we will use ssh in most of the times, password will be used only when sudoing
 
 
-su - deploy
+$ su - deploy
 # switch-user to being 'deploy'!
 ``` 
 
 4. Check (in another console) if you can log in
-```
+```bash
 ssh deploy@111.111.222.111
 ...
-sudo echo sudo_works!
+$ sudo echo sudo_works!
 ```
 ---
 **Intermezzo 2**
@@ -69,12 +69,12 @@ In both cases you will be prompted for a password to confirm. If everything goes
 Set up your firewall. Ubuntu has a default firewall called 'ufw'.
 To set it up for a ssh and web server only do following (as a sudo):
 ```bash
-ufw allow from {your-ip} to any port 22
+$ ufw allow from {your-ip} to any port 22
 # if you have dynamic ip or more clients you can make it more open with 
 # ufw allow 22
-ufw allow 80  # HTTP
-ufw allow 443  # HTTPS
-ufw enable
+$ ufw allow 80  # HTTP
+$ ufw allow 443  # HTTPS
+$ ufw enable
 ```
 To check the status use ```ufw status```
 
